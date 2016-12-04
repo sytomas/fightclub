@@ -1,20 +1,16 @@
-FROM python:2-alpine
-MAINTAINER Hank Preston <hank.preston@gmail.com>
-EXPOSE 5000
+FROM ubuntu:14.04
 
-# Install basic utilities
-RUN apk add -U \
-        ca-certificates \
-  && rm -rf /var/cache/apk/* \
-  && pip install --no-cache-dir \
-        setuptools \
-        wheel
+# install system-wide deps for python and node
+RUN apt-get -yqq update
+RUN apt-get -yqq install python-pip python-dev
 
+ADD fightclub /home/ec2-user/fightclub
+WORKDIR /opt/flask-app
 
-COPY requirements.txt /app/
-RUN pip install -r /app/requirements.txt
+RUN pip install -r requirements.txt
 
-WORKDIR /app
-ADD ./bot /app/bot
+# expose port
+EXPOSE 10010
 
-CMD [ "python", "bot/bot.py" ]
+# start app
+CMD [ "python", "./bot.py" ]
