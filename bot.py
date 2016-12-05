@@ -4,7 +4,7 @@ from itty import *
 import urllib2
 import json
 import requests
-requests.packages.urllib3.disable_warnings()
+#requests.packages.urllib3.disable_warnings()
 from requests.auth import HTTPBasicAuth
 import base64
 import random
