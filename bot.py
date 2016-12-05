@@ -150,7 +150,8 @@ def index(request):
 ####CHANGE THESE VALUES#####
 bot_email = "fightclub@sparkbot.io"
 bot_name = "fightclub"
-bearer = "M2Y4MTBlNmYtYTBhNS00NTU0LWE2M2MtNmY2N2IxNDExNGMwZmFiZjkyMTItMjk4"
+beara = "ZjhhNDVmMjUtODNlMy00YzExLWFjYTctYTJjODVjNmM4NTc3OWUwMWIzN2EtZTRj"
+#bearer = "M2Y4MTBlNmYtYTBhNS00NTU0LWE2M2MtNmY2N2IxNDExNGMwZmFiZjkyMTItMjk4"
 fightclub = "http://giphy.com/search/fight-club"
 happy_bday = "http://giphy.com/search/happy-birthday"
 run_itty(server='wsgiref', host='0.0.0.0', port=10010)
