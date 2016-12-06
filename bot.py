@@ -30,6 +30,8 @@ def chucknorris():
 
 def lmgtfy():
     msg = "Let me get that for you:"
+    text = re.sub(r'( )', r'\1+', word)
+    smerge = "".join(text.split()) # removes spaces
     baseurl = "https://lmgtfy.com/?q="
     finalurl = baseurl + smerge
     webbrowser.open(finalurl)
@@ -106,9 +108,10 @@ def index(request):
                 msg += i
                 msg += u'\n'
         elif 'help' in in_message:
-            word = raw_input('what do you need help with? ')
-            text = re.sub(r'( )', r'\1+', word)
-            smerge = "".join(text.split()) # removes spaces
+            #word = raw_input('what do you need help with? ')
+            msg = "What do you need help with?)
+            #text = re.sub(r'( )', r'\1+', word)
+            #smerge = "".join(text.split()) # removes spaces
             randomurl = lmgtfy()
         elif 'rules' in in_message:
             randomurl = rules()
