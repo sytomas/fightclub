@@ -109,7 +109,7 @@ def index(request):
                 msg += u'\n'
         elif 'help' in in_message:
             #word = raw_input('what do you need help with? ')
-            msg = "What do you need help with?""
+            msg = "What do you need help with?"
             #text = re.sub(r'( )', r'\1+', word)
             #smerge = "".join(text.split()) # removes spaces
             randomurl = lmgtfy()
