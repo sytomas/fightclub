@@ -18,8 +18,8 @@ import re
 
 commands = {
     "/help": "Get help.",
-    "/rules": "Rules of Fight Club"
-    "/gif": "Random GIFs from Fight Club"
+    "/rules": "Rules of Fight Club",
+    "/gif": "Random GIFs from Fight Club",
     "/chucknorris": "You don't ask about Chuck Norris"
 }
 
