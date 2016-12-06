@@ -16,16 +16,18 @@ import sys
 import json
 import re
 
-commands = {
-    "/help": "Get help.",
-    "/chuck": "Get a random Chuck Norris Joke."
-}
+#commands = {
+#    "/help": "Get help.",
+#    "/rules": "Rules of Fight Club"
+#    "/gif": "Random GIFs from Fight Club"
+#    "/chucknorris": "You don't ask about Chuck Norris"
+#}
 
 def rules():
     fc = TinyDB('frules.json')
-    rule = db.all()
-    randomrule = random.choice(rule)
-    return randomrule['quote']
+    rule = fc.all()
+    randomurl = random.choice(rule)
+    return randomurl['quote']
 
 def chucknorris():
     response = urllib2.urlopen('http://api.icndb.com/jokes/random')
@@ -37,6 +39,13 @@ def lmgtfy():
     baseurl = "https://lmgtfy.com/?q="
     finalurl = baseurl + smerge
     webbrowser.open(finalurl)
+
+def fightgif():
+    fg = TinyDB('fgif.json')
+#    fg = urllib2.urlopen('http://giphy.com/search/fight-club')
+    fggif = db.all
+    randomfig = random.choice(fggif)
+    return randomgif['gif']
 
 def sendSparkGET(url):
     """
@@ -107,7 +116,11 @@ def index(request):
             text = re.sub(r'( )', r'\1+', word)
             smerge = "".join(text.split()) # removes spaces
             randomurl = lmgtfy()
-        elif 'fightclub' in in_message:
+        elif 'rules' in in_message:
+            randomurl = rules()
+            sendSparkPOST("https://api.ciscospark.com/v1/messages", {"roomId": webhook['data']['roomId'], "files": randomurl})
+        elif 'fight' in in_message:
+#            randomurl =
             randomquote = fightclub()
             sendSparkPOST("https://api.ciscospark.com/v1/messages", {"roomId": webhook['data']['roomId'], "files": randomurl})
         elif 'chucknorris' in in_message:
@@ -124,5 +137,5 @@ def index(request):
 bot_email = "fightclub@sparkbot.io"
 bot_name = "fightclub"
 bearer = "M2Y4MTBlNmYtYTBhNS00NTU0LWE2M2MtNmY2N2IxNDExNGMwZmFiZjkyMTItMjk4"
-fightclub = "http://giphy.com/search/fight-club"
+#fightgif = "http://giphy.com/search/fight-club"
 run_itty(server='wsgiref', host='0.0.0.0', port=10010)
