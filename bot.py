@@ -16,12 +16,6 @@ import sys
 import json
 import re
 
-#commands = {
-#    "/help": "Get help.",
-#    "/rules": "Rules of Fight Club"
-#    "/gif": "Random GIFs from Fight Club"
-#    "/chucknorris": "You don't ask about Chuck Norris"
-#}
 
 def rules():
     fc = TinyDB('frules.json')
@@ -43,8 +37,8 @@ def lmgtfy():
 def fightgif():
     fg = TinyDB('fgif.json')
 #    fg = urllib2.urlopen('http://giphy.com/search/fight-club')
-    fggif = db.all
-    randomfig = random.choice(fggif)
+    fggif = fg.all
+    randomgif = random.choice(fggif)
     return randomgif['gif']
 
 def sendSparkGET(url):
@@ -137,5 +131,4 @@ def index(request):
 bot_email = "fightclub@sparkbot.io"
 bot_name = "fightclub"
 bearer = "M2Y4MTBlNmYtYTBhNS00NTU0LWE2M2MtNmY2N2IxNDExNGMwZmFiZjkyMTItMjk4"
-#fightgif = "http://giphy.com/search/fight-club"
 run_itty(server='wsgiref', host='0.0.0.0', port=10010)
