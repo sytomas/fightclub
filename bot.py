@@ -17,10 +17,10 @@ import json
 import re
 
 commands = {
-    "/help": "Get help.",
-    "/rules": "Rules of Fight Club",
-    "/gif": "Random GIFs from Fight Club",
-    "/chucknorris": "You don't ask about Chuck Norris"
+    /help": "Get help.",
+    /rules": "Rules of Fight Club",
+    /gif": "Random GIFs from Fight Club",
+    /chucknorris": "You don't ask about Chuck Norris"
 }
 
 def rules():
@@ -34,13 +34,13 @@ def chucknorris():
     joke = json.loads(response.read())["value"]["joke"]
     return joke
 
-def lmgtfy():
-    msg = "Let me get that for you:"
-    text = re.sub(r'( )', r'\1+', word)
-    smerge = "".join(text.split()) # removes spaces
-    baseurl = "https://lmgtfy.com/?q="
-    finalurl = baseurl + smerge
-    webbrowser.open(finalurl)
+#def lmgtfy():
+#    msg = "Let me get that for you:"
+#    text = re.sub(r'( )', r'\1+', word)
+#    smerge = "".join(text.split()) # removes spaces
+#    baseurl = "https://lmgtfy.com/?q="
+#    finalurl = baseurl + smerge
+#    webbrowser.open(finalurl)
 
 def fightgif():
     fg = TinyDB('fgif.json')
