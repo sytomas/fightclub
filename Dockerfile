@@ -7,9 +7,9 @@ RUN apt-get -yqq update
 RUN apt-get -yqq install python-pip python-dev
 
 
-WORKDIR /app
+WORKDIR /home/ec2-user/app
 COPY requirements.txt /app/
-RUN pip install -r /home/ec2-user/app/requirements.txt
+RUN pip install -r /app/requirements.txt
 Add . /app/
 
 
