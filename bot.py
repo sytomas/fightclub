@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
-from itty import *
+#from itty import *
+import itty
 import urllib2
 import json
 import requests
