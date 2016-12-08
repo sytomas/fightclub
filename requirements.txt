@@ -1,6 +1,5 @@
 Flask==0.11.1
 itty==0.8.2
-PIL==1.1.6
 ply==3.4
 pyasn1==0.1.7
 pycrypto==2.6.1
