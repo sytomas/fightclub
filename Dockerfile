@@ -6,7 +6,7 @@ RUN apt-get -yqq update
 RUN apt-get -yqq install python-pip python-dev
 
 #ADD fightclub /home/ec2-user/code/fightclub
-ADD fightclub /home/ec2-user/app
+#ADD fightclub /home/ec2-user/app
 WORKDIR /home/ec2-user/app
 
 COPY . /home/ec2-user/app
