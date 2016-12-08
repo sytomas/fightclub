@@ -14,4 +14,4 @@ Add . /app/
 
 
 # start app
-CMD [ "python", "./bot.py" ]
+CMD [ "python", "./app/bot.py" ]
