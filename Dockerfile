@@ -7,7 +7,9 @@ RUN apt-get -yqq install python-pip python-dev
 ADD fightclub /home/ec2-user/code/fightclub
 #ADD fightclub /home/ec2-user/code
 # WORKDIR /opt/flask-app
+WORKDIR /opt/dock-image
 
+COPY . /opt/dock-image
 RUN pip install -r /home/ec2-user/code/fightclub/requirements.txt
 
 # expose port
