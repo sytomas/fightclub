@@ -18,10 +18,10 @@ import json
 import re
 
 commands = {
-    /help": "Get help.",
-    /rules": "Rules of Fight Club",
-    /fightgif": "Random GIFs from Fight Club",
-    /chucknorris": "You don't ask about Chuck Norris"
+    "/help": "Get help.",
+    "/rules": "Rules of Fight Club"
+    "/fightgif": "Random GIFs from Fight Club"
+    "/chucknorris": "You don't ask about Chuck Norris"
 }
 
 def rules():
