@@ -2,6 +2,7 @@
 
 #from itty import *
 import itty
+from itty import *
 import urllib2
 import json
 import requests
@@ -19,8 +20,8 @@ import re
 
 commands = {
     "/help": "Get help.",
-    "/rules": "Rules of Fight Club"
-    "/fightgif": "Random GIFs from Fight Club"
+    "/rules": "Rules of Fight Club",
+    "/fightgif": "Random GIFs from Fight Club",
     "/chucknorris": "You don't ask about Chuck Norris"
 }
 
@@ -74,7 +75,6 @@ def sendSparkPOST(url, data):
     request.add_header("Authorization", "Bearer "+bearer)
     contents = urllib2.urlopen(request).read()
     return contents
-
 
 @post('/')
 def index(request):
