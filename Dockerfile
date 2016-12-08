@@ -7,7 +7,7 @@ RUN apt-get -yqq install python-pip python-dev
 ADD fightclub /home/ec2-user/code/fightclub
 # WORKDIR /opt/flask-app
 
-RUN pip install -r requirements.txt
+RUN sudo pip install -r requirements.txt
 
 # expose port
 EXPOSE 10010
