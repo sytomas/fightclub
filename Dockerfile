@@ -9,7 +9,7 @@ RUN mkdir /opt/flask
 
 WORKDIR /opt/flask
 ADD requirements.txt /opt/flask
-RUN pip install -r /requirements.txt
+RUN pip install -r /opt/flask/requirements.txt
 Add . /opt/flask
 
 
