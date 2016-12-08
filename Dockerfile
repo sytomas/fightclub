@@ -5,13 +5,12 @@ EXPOSE 10010
 # install system-wide deps for python and node
 RUN apt-get -yqq update
 RUN apt-get -yqq install python-pip python-dev
+RUN mkdir /opt/flask
 
-
-#WORKDIR /home/ec2-user/app
-WORKDIR /home/ec2-user/app
-COPY requirements.txt /app/
-RUN pip install -r /app/requirements.txt
-Add /home/ec2-user/code/fightclub/ /app/
+WORKDIR /opt/flask
+ADD requirements.txt /opt/flask
+RUN pip install -r /requirements.txt
+Add . /opt/flask
 
 
 # start app
