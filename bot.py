@@ -1,20 +1,14 @@
 #!/usr/bin/python
-import itty
+
 from itty import *
 import urllib2
 import json
 import requests
-#requests.packages.urllib3.disable_warnings()
+requests.packages.urllib3.disable_warnings()
 from requests.auth import HTTPBasicAuth
 import base64
 import random
 from tinydb import TinyDB, Query
-from flask import Flask, request
-from ciscosparkapi import CiscoSparkAPI
-import os
-import sys
-import json
-import re
 
 def eventbriteorder():
       response = requests.get(
@@ -317,9 +311,9 @@ def index(request):
 
 
 ####CHANGE THESE VALUES#####
-bot_email = "johnmcbot@sparkbot.io"
-bot_name = "JohnMcBot"
-bearer = "MGYzYTI4MWEtYWZiNi00MzAzLWIxZGYtZmE3MWUyOTg4YmUxYjg2MDM2NTgtZWFk"
+bot_email = "fightclub@sparkbot.io"
+bot_name = "fightclub"
+bearer = "M2Y4MTBlNmYtYTBhNS00NTU0LWE2M2MtNmY2N2IxNDExNGMwZmFiZjkyMTItMjk4"
 bat_signal  = "http://www.gifbin.com/bin/163563561.gif"
 happy_bday = "http://bestanimations.com/Holidays/Birthday/funnybithdaygifs/funny-star-wars-darth-vaderdancing--happy-birthday-gif.gif"
 hula_bears = "http://i.imgur.com/Bz2n7KR.gif"
