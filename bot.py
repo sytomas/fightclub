@@ -10,34 +10,18 @@ import base64
 import random
 from tinydb import TinyDB, Query
 
-def eventbriteorder():
-      response = requests.get(
-         "https://www.eventbriteapi.com/v3/users/me/owned_events/?status=live",
-         headers = {
-             "Authorization": "Bearer JX5ONBLMAVZ7EN2HQTPT",
-         },
-         verify = True,  # Verify SSL certificate
-     )
-      data = response.json()
-      events = len(data['events'])
-      eventid = []
-      eventname = []
-      for i in range(0, events):
-        eventid.append(data['events'][i]['id'])
-        eventname.append(data['events'][i]['name']['text'])
-      return eventid,eventname
 
-def randombear():
-    db = TinyDB('beardb.json')
-    bears = db.all()
-    randomurl = random.choice(bears)
-    return randomurl['url']
+#def randombear():
+#    db = TinyDB('beardb.json')
+#    bears = db.all()
+#    randomurl = random.choice(bears)
+#    return randomurl['url']
 
-def countbears():
-    db = TinyDB('beardb.json')
-    bears = db.all()
-    bearcount = len(bears)
-    return bearcount
+#def countbears():
+#    db = TinyDB('beardb.json')
+#    bears = db.all()
+#    bearcount = len(bears)
+#    return bearcount
 
 def merakigetdevices():
 
@@ -190,8 +174,9 @@ def index(request):
     if webhook['data']['personEmail'] != bot_email:
         in_message = result.get('text', '').lower()
         in_message = in_message.replace(bot_name, '')
-        if 'databears' in in_message or "favorite" in in_message:
-            msg = "I Love Databears!"
+        if 'rules' in in_message:
+            #msg = "I Love Databears!"
+            sendSparkPOST("https://api.ciscospark.com/v1/messages", {"roomId": webhook['data']['roomId'], "files": rules})
         elif 'trainingdaystatus' in in_message:
             eventid,eventname = eventbriteorder()
             for i in range(0, len(eventid)):
@@ -313,6 +298,7 @@ def index(request):
 bot_email = "fightclub@sparkbot.io"
 bot_name = "fightclub"
 bearer = "M2Y4MTBlNmYtYTBhNS00NTU0LWE2M2MtNmY2N2IxNDExNGMwZmFiZjkyMTItMjk4"
+rules = "http://www.diggingforfire.net/sitegfx/FightClub.jpg"
 bat_signal  = "http://www.gifbin.com/bin/163563561.gif"
 happy_bday = "http://bestanimations.com/Holidays/Birthday/funnybithdaygifs/funny-star-wars-darth-vaderdancing--happy-birthday-gif.gif"
 hula_bears = "http://i.imgur.com/Bz2n7KR.gif"
