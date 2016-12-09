@@ -11,17 +11,17 @@ import random
 from tinydb import TinyDB, Query
 
 
-#def randombear():
-#    db = TinyDB('beardb.json')
-#    bears = db.all()
-#    randomurl = random.choice(bears)
-#    return randomurl['url']
+def randombear():
+    db = TinyDB('beardb.json')
+    bears = db.all()
+    randomurl = random.choice(bears)
+    return randomurl['url']
 
-#def countbears():
-#    db = TinyDB('beardb.json')
-#    bears = db.all()
-#    bearcount = len(bears)
-#    return bearcount
+def countbears():
+    db = TinyDB('beardb.json')
+    bears = db.all()
+    bearcount = len(bears)
+    return bearcount
 
 def merakigetdevices():
 
@@ -175,8 +175,7 @@ def index(request):
         in_message = result.get('text', '').lower()
         in_message = in_message.replace(bot_name, '')
         if 'rules' in in_message:
-            #msg = "I Love Databears!"
-            sendSparkPOST("https://api.ciscospark.com/v1/messages", {"roomId": webhook['data']['roomId'], "files": rules})
+            msg = "I Love Databears!"
         elif 'trainingdaystatus' in in_message:
             eventid,eventname = eventbriteorder()
             for i in range(0, len(eventid)):
