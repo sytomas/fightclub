@@ -10,6 +10,22 @@ import base64
 import random
 from tinydb import TinyDB, Query
 
+def eventbriteorder():
+      response = requests.get(
+         "https://www.eventbriteapi.com/v3/users/me/owned_events/?status=live",
+         headers = {
+             "Authorization": "Bearer JX5ONBLMAVZ7EN2HQTPT",
+         },
+         verify = True,  # Verify SSL certificate
+     )
+      data = response.json()
+      events = len(data['events'])
+      eventid = []
+      eventname = []
+      for i in range(0, events):
+        eventid.append(data['events'][i]['id'])
+        eventname.append(data['events'][i]['name']['text'])
+      return eventid,eventname
 
 def randombear():
     db = TinyDB('beardb.json')
@@ -174,7 +190,7 @@ def index(request):
     if webhook['data']['personEmail'] != bot_email:
         in_message = result.get('text', '').lower()
         in_message = in_message.replace(bot_name, '')
-        if 'rules' in in_message:
+        if 'databears' in in_message or "favorite" in in_message:
             msg = "I Love Databears!"
         elif 'trainingdaystatus' in in_message:
             eventid,eventname = eventbriteorder()
@@ -293,11 +309,11 @@ def index(request):
     return "true"
 
 
+
 ####CHANGE THESE VALUES#####
-bot_email = "fightclub@sparkbot.io"
-bot_name = "fightclub"
-bearer = "M2Y4MTBlNmYtYTBhNS00NTU0LWE2M2MtNmY2N2IxNDExNGMwZmFiZjkyMTItMjk4"
-rules = "http://www.diggingforfire.net/sitegfx/FightClub.jpg"
+bot_email = "johnmcbot@sparkbot.io"
+bot_name = "JohnMcBot"
+bearer = "MGYzYTI4MWEtYWZiNi00MzAzLWIxZGYtZmE3MWUyOTg4YmUxYjg2MDM2NTgtZWFk"
 bat_signal  = "http://www.gifbin.com/bin/163563561.gif"
 happy_bday = "http://bestanimations.com/Holidays/Birthday/funnybithdaygifs/funny-star-wars-darth-vaderdancing--happy-birthday-gif.gif"
 hula_bears = "http://i.imgur.com/Bz2n7KR.gif"
