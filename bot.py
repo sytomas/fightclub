@@ -291,6 +291,9 @@ def index(request):
              sendSparkPOST("https://api.ciscospark.com/v1/messages", {"roomId": webhook['data']['roomId'], "files": manatee})
         elif 'raiders' in in_message:
              sendSparkPOST("https://api.ciscospark.com/v1/messages", {"roomId": webhook['data']['roomId'], "files": raiders})
+         elif 'chucknorris' in in_message:
+             randomquote = chucknorris()
+             sendSparkPOST("https://api.ciscospark.com/v1/messages", {"roomId": webhook['data']['roomId'], "files": randomquote})
         elif 'touchdown' in in_message:
              sendSparkPOST("https://api.ciscospark.com/v1/messages", {"roomId": webhook['data']['roomId'], "files": touchdown})
         elif 'osupokes' in in_message:
@@ -313,7 +316,7 @@ def index(request):
 ####CHANGE THESE VALUES#####
 bot_email = "fightclub@sparkbot.io"
 bot_name = "fightclub"
-bearer = "M2Y4MTBlNmYtYTBhNS00NTU0LWE2M2MtNmY2N2IxNDExNGMwZmFiZjkyMTItMjk4"
+bearer = "MzRkMTE3ODctMTMwZC00YmQ5LTliNjMtZDZhNGE0MjE1N2U4ODg2MDNmOTctNWFm"
 bat_signal  = "http://www.gifbin.com/bin/163563561.gif"
 happy_bday = "http://bestanimations.com/Holidays/Birthday/funnybithdaygifs/funny-star-wars-darth-vaderdancing--happy-birthday-gif.gif"
 hula_bears = "http://i.imgur.com/Bz2n7KR.gif"
