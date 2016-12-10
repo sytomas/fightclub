@@ -50,6 +50,12 @@ def chucknorris():
     joke = json.loads(response.read())["value"]["joke"]
     return joke
 
+def rules():
+    fc = TinyDB('frules.json')
+    rule = fc.all()
+    randomurl = random.choice(rule)
+    return randomurl['quote']
+
 def merakigetdevices():
 
     url = 'https://n131.meraki.com/api/v0/networks/L_636696397319504780/devices'
@@ -306,6 +312,8 @@ def index(request):
              msg = chucknorris()
              #randomquote = chucknorris()
              #sendSparkPOST("https://api.ciscospark.com/v1/messages", {"roomId": webhook['data']['roomId'], "files": randomquote})
+        elif 'rules' in in_message:
+             msg = rules()
         elif 'touchdown' in in_message:
              sendSparkPOST("https://api.ciscospark.com/v1/messages", {"roomId": webhook['data']['roomId'], "files": touchdown})
         elif 'osupokes' in in_message:
