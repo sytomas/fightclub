@@ -298,7 +298,7 @@ def index(request):
              sendSparkPOST("https://api.ciscospark.com/v1/messages", {"roomId": webhook['data']['roomId'], "files": raiders})
         elif 'chucknorris' in in_message:
              randomquote = chucknorris()
-             sendSparkPOST("https://api.ciscospark.com/v1/messages", {"roomId": webhook['data']['roomId'], "files": chucknorris})
+             sendSparkPOST("https://api.ciscospark.com/v1/messages", {"roomId": webhook['data']['roomId'], "files": joke})
         elif 'touchdown' in in_message:
              sendSparkPOST("https://api.ciscospark.com/v1/messages", {"roomId": webhook['data']['roomId'], "files": touchdown})
         elif 'osupokes' in in_message:
