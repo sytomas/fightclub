@@ -10,6 +10,12 @@ import base64
 import random
 from tinydb import TinyDB, Query
 
+commands = {
+    "/help": "Get help.",
+    "/rules": "Rules of Fight Club",
+    "/gif": "Random GIFs from Fight Club",
+    "/chucknorris": "You don't ask about Chuck Norris"
+}
 def eventbriteorder():
       response = requests.get(
          "https://www.eventbriteapi.com/v3/users/me/owned_events/?status=live",
@@ -297,8 +303,9 @@ def index(request):
         elif 'raiders' in in_message:
              sendSparkPOST("https://api.ciscospark.com/v1/messages", {"roomId": webhook['data']['roomId'], "files": raiders})
         elif 'chucknorris' in in_message:
-             randomquote = chucknorris()
-             sendSparkPOST("https://api.ciscospark.com/v1/messages", {"roomId": webhook['data']['roomId'], "files": joke})
+             reply chucknorris()
+             #randomquote = chucknorris()
+             #sendSparkPOST("https://api.ciscospark.com/v1/messages", {"roomId": webhook['data']['roomId'], "files": randomquote})
         elif 'touchdown' in in_message:
              sendSparkPOST("https://api.ciscospark.com/v1/messages", {"roomId": webhook['data']['roomId'], "files": touchdown})
         elif 'osupokes' in in_message:
