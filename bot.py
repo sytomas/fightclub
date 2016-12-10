@@ -39,6 +39,11 @@ def countbears():
     bearcount = len(bears)
     return bearcount
 
+def chucknorris():
+    response = urllib2.urlopen('http://api.icndb.com/jokes/random')
+    joke = json.loads(response.read())["value"]["joke"]
+    return joke
+    
 def merakigetdevices():
 
     url = 'https://n131.meraki.com/api/v0/networks/L_636696397319504780/devices'
