@@ -30,7 +30,7 @@ pygpgme==0.3
 pystache==0.5.3
 python-daemon==1.5.2
 python-dateutil
-pyxattr==0.5.0
+pyxattr
 PyYAML==3.10
 requests==2.11.1
 rsa==3.4.1
