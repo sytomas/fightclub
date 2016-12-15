@@ -1,5 +1,5 @@
 awscli==1.10.56
-Babel==0.9.4
+Babel
 backports.ssl-match-hostname==3.4.0.2
 boto==2.42.0
 botocore==1.4.46
