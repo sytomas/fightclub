@@ -6,7 +6,6 @@ RUN "sh" "-c" "echo nameserver 8.8.8.8 >> /etc/resolv.conf"
 # install system-wide deps for python and node
 RUN apt-get -yqq update
 RUN apt-get -yqq install python-pip python-dev
-RUN pip install aws-cfn-bootstrap
 RUN mkdir /opt/flask
 
 WORKDIR /opt/flask
