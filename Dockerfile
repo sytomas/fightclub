@@ -1,7 +1,7 @@
 FROM ubuntu:14.04
 MAINTAINER Syd Tomas <sytomas@cisco.com>
 EXPOSE 10010
-RUN "sh "-c" "echo nameserver 8.8.8.8 >> /etc/resolv.conf"
+RUN "sh" "-c" "echo nameserver 8.8.8.8 >> /etc/resolv.conf"
 
 # install system-wide deps for python and node
 RUN apt-get -yqq update
