@@ -15,6 +15,7 @@ commands = {
     "/rules": "Rules of Fight Club",
     "/gif": "Random GIFs from Fight Club",
     "/chucknorris": "You don't ask about Chuck Norris"
+}
 
 def sendSparkGET(url):
     """
