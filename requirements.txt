@@ -26,7 +26,6 @@ pickleDB==0.6.2
 ply==3.4
 pyasn1==0.1.7
 pycrypto==2.6.1
-pycurl==7.19.0
 pygpgme==0.3
 pyliblzma==0.5.3
 pystache==0.5.3
