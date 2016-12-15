@@ -16,7 +16,6 @@ commands = {
     "/gif": "Random GIFs from Fight Club",
     "/chucknorris": "You don't ask about Chuck Norris"
 
-
 def sendSparkGET(url):
     """
     This method is used for:
@@ -63,7 +62,7 @@ def index(request):
         in_message = result.get('text', '').lower()
         in_message = in_message.replace(bot_name, '')
         if 'batman' in in_message or "whoareyou" in in_message:
-            msg = "I'm Batman!"  
+            msg = "I'm Batman!"
         elif 'batcave' in in_message:
             message = result.get('text').split('batcave')[1].strip(" ")
             if len(message) > 0:
