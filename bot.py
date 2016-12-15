@@ -62,8 +62,8 @@ def index(request):
     if webhook['data']['personEmail'] != bot_email:
         in_message = result.get('text', '').lower()
         in_message = in_message.replace(bot_name, '')
-        if 'batman' in in_message or "whoareyou" in in_message:
-            msg = "I'm Batman!"
+        if 'rules' in in_message or "whoareyou" in in_message:
+            msg = "You do not talk about fightclub!"
         elif 'batcave' in in_message:
             message = result.get('text').split('batcave')[1].strip(" ")
             if len(message) > 0:
