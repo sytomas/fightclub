@@ -41,17 +41,6 @@ def process_incoming_message(post_data):
 
     send_message_to_room(room_id, reply)
 
-Rebuild and Push Your Container
-
-Our bot now has a new ability, but only on our laptop. Now we must create a new Docker Image.
-
-    Build and Push a new Docker Image
-
-# If you've opened a new terminal sense setting before
-export BOT_REPO=<GITHUB REPO>
-export BOT_NAME=<YOUR BOT NAME>
-export DOCKER_USER=<DOCKER HUB USERNAME>
-
 # *******************************
 
 def sendSparkGET(url):
