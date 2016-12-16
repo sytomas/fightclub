@@ -79,9 +79,18 @@ def index(request):
         in_message = result.get('text', '').lower()
         in_message = in_message.replace(bot_name, '')
         if 'rules' in in_message:
-            fcrules = rules()
-            sendSparkPOST("https://api.ciscospark.com/v1/messages", {"roomId": webhook['data']['roomId'], "text": fcrules})
-            #msg = "You do not talk about fightclub!"
+            #fcrules = rules()
+            #sendSparkPOST("https://api.ciscospark.com/v1/messages", {"roomId": webhook['data']['roomId'], "text": fcrules})
+            sendSparkPOST("https://api.ciscospark.com/v1/messages", {"roomId": webhook['data']['roomId'], "files": fcruleimg})
+            msg = "1st RULE: You do not talk about FIGHT CLUB."
+            msg = "2nd RULE: You DO NOT talk about FIGHT CLUB."
+            msg = "2nd RULE: You DO NOT talk about FIGHT CLUB."
+            msg = '3rd RULE: If someone says "stop" or goes limp, taps out the fight is over.'
+            msg = "4th RULE: Only two guys to a fight."
+            msg = "5th RULE: One fight at a time."
+            msg = "6th RULE: No shirts, no shoes."
+            msg = "7th RULE: Fights will go on as long as they have to."
+            msg = "8th and final RULE: If this is your first night at FIGHT CLUB, you HAVE to fight."
         elif 'batcave' in in_message:
             message = result.get('text').split('batcave')[1].strip(" ")
             if len(message) > 0:
@@ -103,6 +112,7 @@ def index(request):
 ####CHANGE THESE VALUES#####
 bot_email = "fightclub@sparkbot.io"
 bot_name = "fightclub"
+fcruleimg = "http://www.diggingforfire.net/sitegfx/FightClub.jpg"
 bearer = "YmZiZTg0N2ItZTZhOS00YTM4LTkyZTYtNzJlZTA2MDZhOGY3MTQ4NTEzNjEtMDA2"
 bat_signal  = "https://upload.wikimedia.org/wikipedia/en/c/c6/Bat-signal_1989_film.jpg"
 run_itty(server='wsgiref', host='0.0.0.0', port=10010)
