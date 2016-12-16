@@ -23,6 +23,12 @@ commands = {
     "/chucknorris": "You don't ask about Chuck Norris"
 }
 
+def chucknorris():
+    response = urllib2.urlopen('http://api.icndb.com/jokes/random')
+    joke = json.loads(response.read())["value"]["joke"]
+    return joke
+
+
 def sendSparkGET(url):
     """
     This method is used for:
@@ -79,6 +85,8 @@ def index(request):
         elif 'batsignal' in in_message:
             print "NANA NANA NANA NANA"
             sendSparkPOST("https://api.ciscospark.com/v1/messages", {"roomId": webhook['data']['roomId'], "files": bat_signal})
+        elif 'chucknorris' in in_mesage:
+            sendSparkPOST("https://api.ciscospark.com/v1/messages", {"roomId": webhook['data']['roomId'], "files": joke})            
         if msg != None:
             print msg
             sendSparkPOST("https://api.ciscospark.com/v1/messages", {"roomId": webhook['data']['roomId'], "text": msg})
