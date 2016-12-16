@@ -28,7 +28,7 @@ except ImportError:
 
 def wx():
     API_URL = "http://www.google.com/ig/api?"
-	arguments = ArgumentParser(prog="weather")
+    arguments = ArgumentParser(prog="weather")
 	unit = arguments.add_argument("--unit", choices="CF", dest="unit", default="C", help="Which unit to display the temperatures in")
 	location = arguments.add_argument("location", nargs="+")
 	args = arguments.parse_args(sys.argv[1:])
