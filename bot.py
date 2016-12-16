@@ -169,7 +169,7 @@ def index(request):
                 msg += u'\n'
         elif 'weather' in in_message:
             msg = ("Weather for {0}:".format(city))
-    		msg = (indent + "{0}{1}".format(temp, args.unit))
+            msg += (indent + "{0}{1}".format(temp, args.unit))
     		print(indent + condition)
     		print(indent + wind_condition)
     		print(indent + humidity)
