@@ -30,7 +30,7 @@ def rules():
 def fightgif():
     fg = TinyDB('fgif.json')
 #    fg = urllib2.urlopen('http://giphy.com/search/fight-club')
-    fggif = fg.all
+    fggif = fg.all()
     randomgif = random.choice(fggif)
     return randomgif['gif']
 
