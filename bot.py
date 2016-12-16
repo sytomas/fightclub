@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 from itty import *
-import urllib2
+import urllib2, urllib
 import json
 import requests
 requests.packages.urllib3.disable_warnings()
@@ -15,6 +15,13 @@ import os
 import sys
 import json
 import re
+from __future__ import print_function
+import httplib2
+from apiclient import discovery
+import oauth2client
+from oauth2client import client
+from oauth2client import tools
+
 
 def chucknorris():
     """
@@ -136,8 +143,8 @@ def index(request):
                 msg += deviceserial[i]
                 msg += u'\n'
         elif 'help' in in_message:
-            print "/rules - Rules of Fight Club. \n"
-            print "/fightgif - sends random Fight Club movie gifs. \n"
+            msg = "/rules - Rules of Fight Club. \n"
+             "/fightgif - sends random Fight Club movie gifs. \n"
             print "/chucknorris - no explanation needed."
         if msg != None:
             print msg
