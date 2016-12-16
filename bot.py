@@ -28,7 +28,7 @@ def rules():
     return randomurl['quote']
 
 def fightgif():
-    fg = TinyDB('fgif.json')
+    fg = TinyDB('fggif.json')
     fggif = fg.all()
     randomgif = random.choice(fggif)
     return randomgif['gif']
