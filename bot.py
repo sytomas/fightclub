@@ -26,11 +26,11 @@ except ImportError:
 # ****************** Get Weather ******************
 #from https://gist.github.com/jleclanche/2689784
 
-API_URL = "http://www.google.com/ig/api?"
 def wx():
+    API_URL = "http://www.google.com/ig/api?"
 	arguments = ArgumentParser(prog="weather")
-	arguments.add_argument("--unit", choices="CF", dest="unit", default="C", help="Which unit to display the temperatures in")
-	arguments.add_argument("location", nargs="+")
+	unit = arguments.add_argument("--unit", choices="CF", dest="unit", default="C", help="Which unit to display the temperatures in")
+	location = arguments.add_argument("location", nargs="+")
 	args = arguments.parse_args(sys.argv[1:])
 
 	for location in args.location:
@@ -46,6 +46,7 @@ def wx():
 		condition = current_conditions.getElementsByTagName("condition")[0].getAttribute("data")
 		wind_condition = current_conditions.getElementsByTagName("wind_condition")[0].getAttribute("data")
 		humidity = current_conditions.getElementsByTagName("humidity")[0].getAttribute("data")
+    return(location, unit)
 # ****************** Get Weather ******************
 
 def chucknorris():
@@ -168,7 +169,8 @@ def index(request):
                 msg += deviceserial[i]
                 msg += u'\n'
         elif 'weather' in in_message:
-            weather = wx()
+            location,unit = wx()
+            #weather = wx()
             msg = ("Weather for {0}:".format(city))
             msg += (indent + "{0}{1}".format(temp, args.unit))
             print(indent + condition)
