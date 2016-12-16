@@ -27,17 +27,11 @@ def rules():
     randomurl = random.choice(rule)
     return randomurl['quote']
 
-#ef fightgif():
-#    fg = TinyDB('fgif.json')
-#    fggif = fg.all()
-#    randomgif = random.choice(fggif)
-#    return randomgif['gif']
-
 def fightgif():
-    db = TinyDB('beardb.json')
-    bears = db.all()
-    randomurl = random.choice(bears)
-    return randomurl['url']
+    fg = TinyDB('fgif.json')
+    fggif = fg.all()
+    randomgif = random.choice(fggif)
+    return randomgif['gif']
 
 def sendSparkGET(url):
     """
