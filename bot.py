@@ -30,7 +30,7 @@ def rules():
 def fightgif():
     fg = TinyDB('fgif.json')
 #    fg = urllib2.urlopen('http://giphy.com/search/fight-club')
-    fggif = db.all
+    fggif = fg.all
     randomfig = random.choice(fggif)
     return randomgif['gif']
 
@@ -91,7 +91,7 @@ def index(request):
                 msg = "The Batcave is silent..."
         elif 'fightgif' in in_message:
             fight = fightgif()
-            sendSparkPOST("https://api.ciscospark.com/v1/messages", {"roomId": webhook['data']['roomId'], "text": fight})
+            sendSparkPOST("https://api.ciscospark.com/v1/messages", {"roomId": webhook['data']['roomId'], "files": fight})
         elif 'chucknorris' in in_message:
             joke = chucknorris()
             sendSparkPOST("https://api.ciscospark.com/v1/messages", {"roomId": webhook['data']['roomId'], "text": joke})
