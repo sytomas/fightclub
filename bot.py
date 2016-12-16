@@ -170,9 +170,9 @@ def index(request):
         elif 'weather' in in_message:
             msg = ("Weather for {0}:".format(city))
             msg += (indent + "{0}{1}".format(temp, args.unit))
-    		print(indent + condition)
-    		print(indent + wind_condition)
-    		print(indent + humidity)
+            print(indent + condition)
+            print(indent + wind_condition)
+            print(indent + humidity)
         if msg != None:
             print msg
             sendSparkPOST("https://api.ciscospark.com/v1/messages", {"roomId": webhook['data']['roomId'], "text": msg})
