@@ -143,7 +143,7 @@ def index(request):
         elif 'cmxclientmac' in in_message:
             clientmac = cmxgetclientmac()
             for i in clientmac:
-                msg += i
+                msg = i
                 msg += u'\n'
         elif 'help' in in_message:
             msg = "fightgif \n"
