@@ -39,35 +39,22 @@ def fightgif():
     randomgif = random.choice(fggif)
     return randomgif['gif']
 
-def cmxgetclientmac():
-   storedCredentials = True
-   username = 'learning'
-   password = 'learning'
-   restURL = 'https://msesandbox.cisco.com:8081/api/location/v2/clients'
-   clientmac = []
-   if not storedCredentials:
-           username = raw_input("Username: ")
-           password = raw_input("Password: ")
-           storedCredentials = True
+def getmerakidevices():
 
-           print("----------------------------------")
-           print("Authentication string: "+ username+":"+password)
-           print("Base64 encoded auth string: " + base64.b64encode(username+":"+password))
-           print("----------------------------------")
+    url = 'https://n131.meraki.com/api/v0/networks/L_636696397319504780/devices'
+    headers = {'X-Cisco-Meraki-API-Key': '158adab9d93235d072e3258a3644d3af3b346e21'}
+    devicemodel = []
+    deviceserial = []
+    r = requests.get(url, headers=headers)
 
-   try:
-           request = requests.get(
-           url = restURL,
-           auth = HTTPBasicAuth(username,password),
-           verify=False)
+    binary = r.content
+    output = json.loads(binary)
 
-           parsed = json.loads(request.content)
-           clientcount = len(parsed)
-           for x in range(0, clientcount):
-               clientmac.append(parsed[x]["macAddress"])
-           return clientmac
-   except requests.exceptions.RequestException as e:
-           print(e)
+    numdevices = len(output)
+    for x in range(0, numdevices):
+        devicemodel.append(output[x]["model"])
+        deviceserial.append(output[x]["serial"])
+    return devicemodel,deviceserial
 
 #******************************************************
 def sendSparkGET(url):
@@ -139,6 +126,15 @@ def index(request):
         elif 'chucknorris' in in_message:
             joke = chucknorris()
             sendSparkPOST("https://api.ciscospark.com/v1/messages", {"roomId": webhook['data']['roomId'], "text": joke})
+        elif 'merakidevices' in in_message:
+            devicemodel,deviceserial = getmerakidevices()
+            for i in range(0, len(devicemodel)):
+                msg += 'Model:'
+                msg += devicemodel[i]
+                msg += u'\t'
+                msg += 'Serial:'
+                msg += deviceserial[i]
+                msg += u'\n'
         elif 'cmxclientmac' in in_message:
             clientmac = cmxgetclientmac()
             for i in clientmac:
