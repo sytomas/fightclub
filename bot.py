@@ -168,6 +168,7 @@ def index(request):
                 msg += deviceserial[i]
                 msg += u'\n'
         elif 'weather' in in_message:
+            weather = wx()
             msg = ("Weather for {0}:".format(city))
             msg += (indent + "{0}{1}".format(temp, args.unit))
             print(indent + condition)
