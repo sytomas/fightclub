@@ -16,32 +16,10 @@ import sys
 import json
 import re
 
-commands = {
-    "/help": "Get help.",
-    "/rules": "Rules of Fight Club",
-    "/gif": "Random GIFs from Fight Club",
-    "/chucknorris": "You don't ask about Chuck Norris"
-}
-
 def chucknorris():
     response = urllib2.urlopen('http://api.icndb.com/jokes/random')
     joke = json.loads(response.read())["value"]["joke"]
     return joke
-
-# *******************************
-def process_incoming_message(post_data):
-    # Take action based on command
-    # If no command found, send help
-    if command in ["","/help"]:
-        reply = send_help(post_data)
-    elif command in ["/echo"]:
-        reply = send_echo(message)
-    elif command in ["/chucknorris"]:
-        reply = joke()
-
-    send_message_to_room(room_id, reply)
-
-# *******************************
 
 def sendSparkGET(url):
     """
@@ -101,7 +79,7 @@ def index(request):
             sendSparkPOST("https://api.ciscospark.com/v1/messages", {"roomId": webhook['data']['roomId'], "files": bat_signal})
         elif 'chucknorris' in in_message:
             joke = chucknorris()
-            sendSparkPOST("https://api.ciscospark.com/v1/messages", {"roomId": webhook['data']['roomId'], "files": joke})
+            sendSparkPOST("https://api.ciscospark.com/v1/messages", {"roomId": webhook['data']['roomId'], "text": joke})
         if msg != None:
             print msg
             sendSparkPOST("https://api.ciscospark.com/v1/messages", {"roomId": webhook['data']['roomId'], "text": msg})
