@@ -21,6 +21,12 @@ def chucknorris():
     joke = json.loads(response.read())["value"]["joke"]
     return joke
 
+def rules():
+    fc = TinyDB('frules.json')
+    rule = fc.all()
+    randomurl = random.choice(rule)
+    return randomurl['quote']
+
 def sendSparkGET(url):
     """
     This method is used for:
@@ -67,7 +73,9 @@ def index(request):
         in_message = result.get('text', '').lower()
         in_message = in_message.replace(bot_name, '')
         if 'rules' in in_message:
-            msg = "You do not talk about fightclub!"
+            rules = rules()
+            sendSparkPOST("https://api.ciscospark.com/v1/messages", {"roomId": webhook['data']['roomId'], "text": rules})
+            #msg = "You do not talk about fightclub!"
         elif 'batcave' in in_message:
             message = result.get('text').split('batcave')[1].strip(" ")
             if len(message) > 0:
