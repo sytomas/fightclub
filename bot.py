@@ -49,7 +49,7 @@ def wx():
 
 		indent = "  "
 		print("Weather for {0}:".format(city))
-		print(indent + "{0}°{1}".format(temp, args.unit))
+		print(indent + "{0}{1}".format(temp, args.unit))
 		print(indent + condition)
 		print(indent + wind_condition)
 		print(indent + humidity)
