@@ -39,6 +39,38 @@ def fightgif():
     randomgif = random.choice(fggif)
     return randomgif['gif']
 
+def cmxgetclientmac():
+
+   storedCredentials = True
+   username = 'learning'
+   password = 'learning'
+   restURL = 'https://msesandbox.cisco.com:8081/api/location/v2/clients'
+   clientmac = []
+   if not storedCredentials:
+           username = raw_input("Username: ")
+           password = raw_input("Password: ")
+           storedCredentials = True
+
+           print("----------------------------------")
+           print("Authentication string: "+ username+":"+password)
+           print("Base64 encoded auth string: " + base64.b64encode(username+":"+password))
+           print("----------------------------------")
+
+   try:
+           request = requests.get(
+           url = restURL,
+           auth = HTTPBasicAuth(username,password),
+           verify=False)
+
+           parsed = json.loads(request.content)
+           clientcount = len(parsed)
+           for x in range(0, clientcount):
+               clientmac.append(parsed[x]["macAddress"])
+           return clientmac
+   except requests.exceptions.RequestException as e:
+           print(e)
+
+#******************************************************
 def sendSparkGET(url):
     """
     This method is used for:
@@ -63,6 +95,8 @@ def sendSparkPOST(url, data):
     request.add_header("Authorization", "Bearer "+bearer)
     contents = urllib2.urlopen(request).read()
     return contents
+#******************************************************
+
 
 @post('/')
 def index(request):
@@ -106,6 +140,11 @@ def index(request):
         elif 'chucknorris' in in_message:
             joke = chucknorris()
             sendSparkPOST("https://api.ciscospark.com/v1/messages", {"roomId": webhook['data']['roomId'], "text": joke})
+        elif 'cmxclientmac' in in_message:
+            clientmac = cmxgetclientmac()
+            for i in clientmac:
+                msg += i
+                msg += u'\n'
         elif 'help' in in_message:
             msg = "fightgif \n"
             msg = "rules \n"
