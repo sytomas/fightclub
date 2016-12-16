@@ -73,8 +73,8 @@ def index(request):
         in_message = result.get('text', '').lower()
         in_message = in_message.replace(bot_name, '')
         if 'rules' in in_message:
-            rules = rules()
-            sendSparkPOST("https://api.ciscospark.com/v1/messages", {"roomId": webhook['data']['roomId'], "text": rules})
+            fcrules = rules()
+            sendSparkPOST("https://api.ciscospark.com/v1/messages", {"roomId": webhook['data']['roomId'], "text": fcrules})
             #msg = "You do not talk about fightclub!"
         elif 'batcave' in in_message:
             message = result.get('text').split('batcave')[1].strip(" ")
