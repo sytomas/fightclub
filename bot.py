@@ -107,7 +107,7 @@ def index(request):
             joke = chucknorris()
             sendSparkPOST("https://api.ciscospark.com/v1/messages", {"roomId": webhook['data']['roomId'], "text": joke})
         elif 'help' in in_message:
-            msg += "fightgif\n"
+            msg = "fightgif\n"
             msg += "rules\n"
             msg += "chucknorris\n"
         if msg != None:
