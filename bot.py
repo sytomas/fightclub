@@ -4,7 +4,7 @@ from itty import *
 import urllib2
 import json
 import requests
-#requests.packages.urllib3.disable_warnings()
+requests.packages.urllib3.disable_warnings()
 from requests.auth import HTTPBasicAuth
 import base64
 import random
@@ -40,7 +40,6 @@ def fightgif():
     return randomgif['gif']
 
 def cmxgetclientmac():
-
    storedCredentials = True
    username = 'learning'
    password = 'learning'
@@ -143,7 +142,7 @@ def index(request):
         elif 'cmxclientmac' in in_message:
             clientmac = cmxgetclientmac()
             for i in clientmac:
-                msg = i
+                msg += i
                 msg += u'\n'
         elif 'help' in in_message:
             msg = "fightgif \n"
