@@ -17,6 +17,12 @@ import json
 import re
 from argparse import ArgumentParser
 from xml.dom import minidom
+try:
+	from urllib.request import urlopen
+	from urllib.parse import urlencode
+except ImportError:
+	from urllib import urlopen, urlencode
+
 
 def chucknorris():
     """
