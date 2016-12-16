@@ -15,11 +15,6 @@ import os
 import sys
 import json
 import re
-# ******* for google SMS *********
-import oauth2client
-from oauth2client import client
-from oauth2client import tools
-# ******* for google SMS *********
 
 def chucknorris():
     """
