@@ -4,7 +4,6 @@ from itty import *
 import urllib2
 import json
 import requests
-import urllib3
 requests.packages.urllib3.disable_warnings()
 from requests.auth import HTTPBasicAuth
 import base64
@@ -130,7 +129,7 @@ def index(request):
         elif 'merakidevices' in in_message:
             devicemodel,deviceserial = getmerakidevices()
             for i in range(0, len(devicemodel)):
-                msg += 'Model:'
+                msg = 'Model:'
                 msg += devicemodel[i]
                 msg += u'\t'
                 msg += 'Serial:'
