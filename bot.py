@@ -17,6 +17,9 @@ import json
 import re
 
 def chucknorris():
+    """
+    chucknorris - no explanation needed.' 
+    """
     response = urllib2.urlopen('http://api.icndb.com/jokes/random')
     joke = json.loads(response.read())["value"]["joke"]
     return joke
@@ -28,6 +31,9 @@ def rules():
     return randomurl['quote']
 
 def fightgif():
+    """
+    the fightgif definition retrieves random a gif link from the 'fggif.json'
+    """
     fg = TinyDB('fggif.json')
     fggif = fg.all()
     randomgif = random.choice(fggif)
@@ -57,8 +63,6 @@ def sendSparkPOST(url, data):
     request.add_header("Authorization", "Bearer "+bearer)
     contents = urllib2.urlopen(request).read()
     return contents
-
-
 
 @post('/')
 def index(request):
