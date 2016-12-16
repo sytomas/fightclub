@@ -16,7 +16,6 @@ import sys
 import json
 import re
 # ******* for google SMS *********
-from __future__ import print_function
 import oauth2client
 from oauth2client import client
 from oauth2client import tools
