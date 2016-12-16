@@ -90,9 +90,9 @@ def index(request):
     When messages come in from the webhook, they are processed here.  The message text needs to be retrieved from Spark,
     using the sendSparkGet() function.  The message text is parsed.  If an expected command is found in the message,
     further actions are taken. i.e.
-    /batman    - replies to the room with text
-    /batcave   - echoes the incoming text to the room
-    /batsignal - replies to the room with an image
+    /rules    - Rules of Fight Club
+    /fightgif   - sends random Fight Club movie gifs
+    /chucknorris - no explanation needed
     """
     webhook = json.loads(request.body)
     print webhook['data']['id']
@@ -135,15 +135,10 @@ def index(request):
                 msg += 'Serial:'
                 msg += deviceserial[i]
                 msg += u'\n'
-        elif 'cmxclientmac' in in_message:
-            clientmac = cmxgetclientmac()
-            for i in clientmac:
-                msg += i
-                msg += u'\n'
         elif 'help' in in_message:
-            msg = "fightgif \n"
-            msg = "rules \n"
-            msg = "chucknorris \n"
+            msg = "/rules - Rules of Fight Club. \n"
+            msg += "/fightgif - sends random Fight Club movie gifs. \n"
+            msg += "/chucknorris - no explanation needed.""
         if msg != None:
             print msg
             sendSparkPOST("https://api.ciscospark.com/v1/messages", {"roomId": webhook['data']['roomId'], "text": msg})
@@ -153,7 +148,7 @@ def index(request):
 ####CHANGE THESE VALUES#####
 bot_email = "fightclub@sparkbot.io"
 bot_name = "fightclub"
-fcruleimg = "http://www.diggingforfire.net/sitegfx/FightClub.jpg"
 bearer = "YmZiZTg0N2ItZTZhOS00YTM4LTkyZTYtNzJlZTA2MDZhOGY3MTQ4NTEzNjEtMDA2"
+fcruleimg = "http://www.diggingforfire.net/sitegfx/FightClub.jpg"
 bat_signal  = "https://upload.wikimedia.org/wikipedia/en/c/c6/Bat-signal_1989_film.jpg"
 run_itty(server='wsgiref', host='0.0.0.0', port=10010)
