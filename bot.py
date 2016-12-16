@@ -46,13 +46,6 @@ def wx():
 		condition = current_conditions.getElementsByTagName("condition")[0].getAttribute("data")
 		wind_condition = current_conditions.getElementsByTagName("wind_condition")[0].getAttribute("data")
 		humidity = current_conditions.getElementsByTagName("humidity")[0].getAttribute("data")
-
-		indent = "  "
-		print("Weather for {0}:".format(city))
-		print(indent + "{0}{1}".format(temp, args.unit))
-		print(indent + condition)
-		print(indent + wind_condition)
-		print(indent + humidity)
 # ****************** Get Weather ******************
 
 def chucknorris():
@@ -174,6 +167,13 @@ def index(request):
                 msg += 'Serial:'
                 msg += deviceserial[i]
                 msg += u'\n'
+        elif 'weather' in in_message:
+            indent = "  "
+    		msg = ("Weather for {0}:".format(city))
+    		msg = (indent + "{0}{1}".format(temp, args.unit))
+    		print(indent + condition)
+    		print(indent + wind_condition)
+    		print(indent + humidity)
         if msg != None:
             print msg
             sendSparkPOST("https://api.ciscospark.com/v1/messages", {"roomId": webhook['data']['roomId'], "text": msg})
