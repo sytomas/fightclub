@@ -27,6 +27,13 @@ def rules():
     randomurl = random.choice(rule)
     return randomurl['quote']
 
+def fightgif():
+    fg = TinyDB('fgif.json')
+#    fg = urllib2.urlopen('http://giphy.com/search/fight-club')
+    fggif = db.all
+    randomfig = random.choice(fggif)
+    return randomgif['gif']
+
 def sendSparkGET(url):
     """
     This method is used for:
@@ -82,9 +89,9 @@ def index(request):
                 msg = "The Batcave echoes, '{0}'".format(message)
             else:
                 msg = "The Batcave is silent..."
-        elif 'batsignal' in in_message:
-            print "NANA NANA NANA NANA"
-            sendSparkPOST("https://api.ciscospark.com/v1/messages", {"roomId": webhook['data']['roomId'], "files": bat_signal})
+        elif 'fightgif' in in_message:
+            fight = fightgif()
+            sendSparkPOST("https://api.ciscospark.com/v1/messages", {"roomId": webhook['data']['roomId'], "text": fight})
         elif 'chucknorris' in in_message:
             joke = chucknorris()
             sendSparkPOST("https://api.ciscospark.com/v1/messages", {"roomId": webhook['data']['roomId'], "text": joke})
