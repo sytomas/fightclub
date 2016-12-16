@@ -138,7 +138,7 @@ def index(request):
         elif 'help' in in_message:
             msg = "/rules - Rules of Fight Club. \n"
             msg += "/fightgif - sends random Fight Club movie gifs. \n"
-            msg += "/chucknorris - no explanation needed.""
+            msg += "/chucknorris - no explanation needed."
         if msg != None:
             print msg
             sendSparkPOST("https://api.ciscospark.com/v1/messages", {"roomId": webhook['data']['roomId'], "text": msg})
