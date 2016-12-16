@@ -136,7 +136,7 @@ def index(request):
                 msg += deviceserial[i]
                 msg += u'\n'
         elif 'help' in in_message:
-            msg = "/rules - Rules of Fight Club. \n"
+            print = "/rules - Rules of Fight Club. \n"
             msg += "/fightgif - sends random Fight Club movie gifs. \n"
             msg += "/chucknorris - no explanation needed."
         if msg != None:
