@@ -86,7 +86,7 @@ def index(request):
             #fcrules = rules()
             #sendSparkPOST("https://api.ciscospark.com/v1/messages", {"roomId": webhook['data']['roomId'], "text": fcrules})
             sendSparkPOST("https://api.ciscospark.com/v1/messages", {"roomId": webhook['data']['roomId'], "files": fcruleimg})
-            msg += "1st RULE: You do not talk about FIGHT CLUB."
+            msg = "1st RULE: You do not talk about FIGHT CLUB."
             msg += "2nd RULE: You DO NOT talk about FIGHT CLUB."
             msg += "2nd RULE: You DO NOT talk about FIGHT CLUB."
             msg += '3rd RULE: If someone says "stop" or goes limp, taps out the fight is over.'
