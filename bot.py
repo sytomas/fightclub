@@ -27,7 +27,7 @@ except ImportError:
 #from https://gist.github.com/jleclanche/2689784
 
 def wx():
-    API_URL = "http://www.google.com/ig/api?"
+    api_url = 'http://avwx.rest/api/metar/'
     arguments = ArgumentParser(prog="weather")
     unit = arguments.add_argument("--unit", choices="CF", dest="unit", default="C", help="Which unit to display the temperatures in")
     location = arguments.add_argument("location", nargs="+")
