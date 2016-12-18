@@ -15,19 +15,23 @@ import os
 import sys
 import json
 import re
-from argparse import ArgumentParser
-from xml.dom import minidom
-try:
-	from urllib.request import urlopen
-	from urllib.parse import urlencode
-except ImportError:
-	from urllib import urlopen, urlencode
+#*********** Imports for wx ***************
+import sqlite3 , json , sys
+if sys.version_info[0] == 2: import urllib2
+elif sys.version_info[0] == 3: from urllib.request import urlopen
+from itertools import permutations
+from time import strftime
+from copy import copy
+from os import path
+from .xmltodict import parse
+#********************************************
 
 # ****************** Get Weather ******************
-#from https://gist.github.com/jleclanche/2689784
+#from https://github.com/flyinactor91/AVWX-API
 
 def wx():
     api_url = 'http://avwx.rest/api/metar/'
+
     arguments = ArgumentParser(prog="weather")
     unit = arguments.add_argument("--unit", choices="CF", dest="unit", default="C", help="Which unit to display the temperatures in")
     location = arguments.add_argument("location", nargs="+")
@@ -135,7 +139,7 @@ def index(request):
     if webhook['data']['personEmail'] != bot_email:
         in_message = result.get('text', '').lower()
         in_message = in_message.replace(bot_name, '')
-        if 'rules' in in_message:
+        if '/rules' in in_message:
             #fcrules = rules()
             #sendSparkPOST("https://api.ciscospark.com/v1/messages", {"roomId": webhook['data']['roomId'], "text": fcrules})
             sendSparkPOST("https://api.ciscospark.com/v1/messages", {"roomId": webhook['data']['roomId'], "files": fcruleimg})
@@ -147,19 +151,19 @@ def index(request):
             msg += "6th RULE: No shirts, no shoes.\n"
             msg += "7th RULE: Fights will go on as long as they have to.\n"
             msg += "8th and final RULE: If this is your first night at FIGHT CLUB, you HAVE to fight."
-        elif 'batcave' in in_message:
+        elif '/batcave' in in_message:
             message = result.get('text').split('batcave')[1].strip(" ")
             if len(message) > 0:
                 msg = "The Batcave echoes, '{0}'".format(message)
             else:
                 msg = "The Batcave is silent..."
-        elif 'fightgif' in in_message:
+        elif '/fightgif' in in_message:
             fight = fightgif()
             sendSparkPOST("https://api.ciscospark.com/v1/messages", {"roomId": webhook['data']['roomId'], "files": fight})
-        elif 'chucknorris' in in_message:
+        elif '/chucknorris' in in_message:
             joke = chucknorris()
             sendSparkPOST("https://api.ciscospark.com/v1/messages", {"roomId": webhook['data']['roomId'], "text": joke})
-        elif 'merakidevices' in in_message:
+        elif '/merakidevices' in in_message:
             devicemodel,deviceserial = getmerakidevices()
             for i in range(0, len(devicemodel)):
                 msg = 'Model:'
@@ -168,7 +172,7 @@ def index(request):
                 msg += 'Serial:'
                 msg += deviceserial[i]
                 msg += u'\n'
-        elif 'weather' in in_message:
+        elif '/weather' in in_message:
             location,unit = wx()
             #weather = wx()
             msg = ("Weather for {0}:".format(city))
