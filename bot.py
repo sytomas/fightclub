@@ -146,7 +146,7 @@ def index(request):
 ####CHANGE THESE VALUES#####
 bot_email = "fightclub@sparkbot.io"
 bot_name = "fightclub"
-bearer = "YmZiZTg0N2ItZTZhOS00YTM4LTkyZTYtNzJlZTA2MDZhOGY3MTQ4NTEzNjEtMDA2"
+bearer = "MzRkMTE3ODctMTMwZC00YmQ5LTliNjMtZDZhNGE0MjE1N2U4ODg2MDNmOTctNWFm"
 fcruleimg = "http://www.diggingforfire.net/sitegfx/FightClub.jpg"
 bat_signal  = "https://upload.wikimedia.org/wikipedia/en/c/c6/Bat-signal_1989_film.jpg"
 run_itty(server='wsgiref', host='0.0.0.0', port=10010)
