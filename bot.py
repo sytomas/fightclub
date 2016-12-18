@@ -15,43 +15,6 @@ import os
 import sys
 import json
 import re
-#*********** Imports for wx ***************
-import sqlite3 , json , sys
-if sys.version_info[0] == 2: import urllib2
-elif sys.version_info[0] == 3: from urllib.request import urlopen
-from itertools import permutations
-from time import strftime
-from copy import copy
-from os import path
-from .xmltodict import parse
-#********************************************
-
-# ****************** Get Weather ******************
-#from https://github.com/flyinactor91/AVWX-API
-
-def wx():
-    api_url = 'http://avwx.rest/api/metar/'
-
-    arguments = ArgumentParser(prog="weather")
-    unit = arguments.add_argument("--unit", choices="CF", dest="unit", default="C", help="Which unit to display the temperatures in")
-    location = arguments.add_argument("location", nargs="+")
-    args = arguments.parse_args(sys.argv[1:])
-
-    for location in args.location:
-        url = API_URL + urlencode({"weather": location})
-        xml = urlopen(url).read()
-        doc = minidom.parseString(xml)
-
-        forecast_information = doc.documentElement.getElementsByTagName("forecast_information")[0]
-        city = forecast_information.getElementsByTagName("city")[0].getAttribute("data")
-
-        current_conditions = doc.documentElement.getElementsByTagName("current_conditions")[0]
-        temp = current_conditions.getElementsByTagName("temp_f" if args.unit == "F" else "temp_c")[0].getAttribute("data")
-        condition = current_conditions.getElementsByTagName("condition")[0].getAttribute("data")
-        wind_condition = current_conditions.getElementsByTagName("wind_condition")[0].getAttribute("data")
-        humidity = current_conditions.getElementsByTagName("humidity")[0].getAttribute("data")
-    return(location, unit)
-# ****************** Get Weather ******************
 
 def chucknorris():
     """
@@ -172,14 +135,6 @@ def index(request):
                 msg += 'Serial:'
                 msg += deviceserial[i]
                 msg += u'\n'
-        elif '/weather' in in_message:
-            location,unit = wx()
-            #weather = wx()
-            msg = ("Weather for {0}:".format(city))
-            msg += (indent + "{0}{1}".format(temp, args.unit))
-            print(indent + condition)
-            print(indent + wind_condition)
-            print(indent + humidity)
         if msg != None:
             print msg
             sendSparkPOST("https://api.ciscospark.com/v1/messages", {"roomId": webhook['data']['roomId'], "text": msg})
