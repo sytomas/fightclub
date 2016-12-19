@@ -124,7 +124,7 @@ def index(request):
             msg += "/chucknorris - Chuck Norris needs no explanation. \n"
         elif '/fightgif' in in_message:
             fight = fightgif()
-            #sendSparkPOST("https://api.ciscospark.com/v1/messages", {"roomId": webhook['data']['roomId'], "files": fight})
+            sendSparkPOST("https://api.ciscospark.com/v1/messages", {"roomId": webhook['data']['roomId'], "files": fight})
         elif '/chucknorris' in in_message:
             joke = chucknorris()
             sendSparkPOST("https://api.ciscospark.com/v1/messages", {"roomId": webhook['data']['roomId'], "text": joke})
