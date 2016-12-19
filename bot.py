@@ -118,10 +118,10 @@ def index(request):
             else:
                 msg = "The Batcave is silent..."
         elif '/help'in in_message:
-            msg = "Commands I understand: \n"
-            msg = "/rules - Rules of Fight Club. \n"
-            msg = "/fightgif - sends random Fight Club movie gifs. \n"
-            msg = "/chucknorris - Chuck Norris needs no explanation. \n"
+            msg += "Commands I understand: \n"
+            msg += "/rules - Rules of Fight Club. \n"
+            msg += "/fightgif - sends random Fight Club movie gifs. \n"
+            msg += "/chucknorris - Chuck Norris needs no explanation. \n"
         elif '/fightgif' in in_message:
             fight = fightgif()
             #sendSparkPOST("https://api.ciscospark.com/v1/messages", {"roomId": webhook['data']['roomId'], "files": fight})
