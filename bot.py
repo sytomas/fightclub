@@ -124,7 +124,7 @@ def index(request):
             msg = "/chucknorris - Chuck Norris needs no explanation. \n"
         elif '/fightgif' in in_message:
             fight = fightgif()
-            sendSparkPOST("https://api.ciscospark.com/v1/messages", {"roomId": webhook['data']['roomId'], "files": fight})
+            #sendSparkPOST("https://api.ciscospark.com/v1/messages", {"roomId": webhook['data']['roomId'], "files": fight})
         elif '/chucknorris' in in_message:
             joke = chucknorris()
             sendSparkPOST("https://api.ciscospark.com/v1/messages", {"roomId": webhook['data']['roomId'], "text": joke})
@@ -146,8 +146,8 @@ def index(request):
 ####CHANGE THESE VALUES#####
 bot_email = "fightclub@sparkbot.io"
 bot_name = "fightclub"
-#bearer = "MzJjZDAxNWUtOTIzZC00MTdmLTg0MWQtMjVkY2ZkNjU0ZmYxZDdjZDM1NjgtYWMw" #fightclub bearer token
-bearer = "YmZiZTg0N2ItZTZhOS00YTM4LTkyZTYtNzJlZTA2MDZhOGY3MTQ4NTEzNjEtMDA2" #My Bearer Token
+bearer = "MzJjZDAxNWUtOTIzZC00MTdmLTg0MWQtMjVkY2ZkNjU0ZmYxZDdjZDM1NjgtYWMw" #fightclub bearer token
+#bearer = "YmZiZTg0N2ItZTZhOS00YTM4LTkyZTYtNzJlZTA2MDZhOGY3MTQ4NTEzNjEtMDA2" #My Bearer Token
 fcruleimg = "http://www.diggingforfire.net/sitegfx/FightClub.jpg"
 bat_signal  = "https://upload.wikimedia.org/wikipedia/en/c/c6/Bat-signal_1989_film.jpg"
 run_itty(server='wsgiref', host='0.0.0.0', port=10010)
