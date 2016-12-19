@@ -117,7 +117,7 @@ def index(request):
                 msg = "The Batcave echoes, '{0}'".format(message)
             else:
                 msg = "The Batcave is silent..."
-        elif 'help'in in_message:
+        elif '/help'in in_message:
             msg = "Commands I understand: \n"
             msg = "/rules - Rules of Fight Club. \n"
             msg = "/fightgif - sends random Fight Club movie gifs. \n"
