@@ -118,7 +118,7 @@ def index(request):
             else:
                 msg = "The Batcave is silent..."
         elif '/help'in in_message:
-            msg += "Commands I understand: \n"
+            msg = "Commands I understand: \n"
             msg += "/rules - Rules of Fight Club. \n"
             msg += "/fightgif - sends random Fight Club movie gifs. \n"
             msg += "/chucknorris - Chuck Norris needs no explanation. \n"
