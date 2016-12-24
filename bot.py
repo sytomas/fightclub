@@ -97,10 +97,9 @@ def index(request):
     result = json.loads(result)
     print result
     msg = None
-    #if webhook['data']['personEmail'] != bot_email:
-    if webhook['data']['personEmail'] = bot_email:
-        in_message = result.get('text', '').lower()
-        in_message = in_message.replace(bot_name, '')
+    if webhook['data']['personEmail'] != bot_email:
+        #in_message = result.get('text', '').lower()
+        #in_message = in_message.replace(bot_name, '')
         if '/rules' in in_message:
             #fcrules = rules()
             #sendSparkPOST("https://api.ciscospark.com/v1/messages", {"roomId": webhook['data']['roomId'], "text": fcrules})
