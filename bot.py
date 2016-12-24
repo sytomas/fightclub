@@ -97,7 +97,8 @@ def index(request):
     result = json.loads(result)
     print result
     msg = None
-    if webhook['data']['personEmail'] != bot_email:
+    #if webhook['data']['personEmail'] != bot_email:
+    if webhook['data']['personEmail'] = bot_email:
         in_message = result.get('text', '').lower()
         in_message = in_message.replace(bot_name, '')
         if '/rules' in in_message:
@@ -145,8 +146,8 @@ def index(request):
 
 
 ####CHANGE THESE VALUES#####
-#bot_email = "fightclub@sparkbot.io"
-#bot_name = "fightclub"
+bot_email = "fightclub@sparkbot.io"
+bot_name = "fightclub"
 bearer = "MzJjZDAxNWUtOTIzZC00MTdmLTg0MWQtMjVkY2ZkNjU0ZmYxZDdjZDM1NjgtYWMw" #fightclub bearer token
 #bearer = "YmZiZTg0N2ItZTZhOS00YTM4LTkyZTYtNzJlZTA2MDZhOGY3MTQ4NTEzNjEtMDA2" #My Bearer Token
 fcruleimg = "http://www.diggingforfire.net/sitegfx/FightClub.jpg"
