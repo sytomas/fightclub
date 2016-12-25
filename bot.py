@@ -99,7 +99,7 @@ def index(request):
     msg = None
     if webhook['data']['personEmail'] != bot_email:
         in_message = result.get('text', '').lower()
-        #in_message = in_message.replace(bot_name, '')
+        in_message = in_message.replace(bot_name, '')
         if '/rules' in in_message:
             sendSparkPOST("https://api.ciscospark.com/v1/messages", {"roomId": webhook['data']['roomId'], "files": fcruleimg})
             msg = "1st RULE: You do not talk about FIGHT CLUB.\n"
@@ -145,9 +145,9 @@ def index(request):
 ####CHANGE THESE VALUES#####
 bot_email = "fightclub@sparkbot.io"
 bot_name = "fightclub"
-#bearer = "MzJjZDAxNWUtOTIzZC00MTdmLTg0MWQtMjVkY2ZkNjU0ZmYxZDdjZDM1NjgtYWMw" #fightclub bearer token
+bearer = "MzJjZDAxNWUtOTIzZC00MTdmLTg0MWQtMjVkY2ZkNjU0ZmYxZDdjZDM1NjgtYWMw" #fightclub bearer token
 #bearer = "YmZiZTg0N2ItZTZhOS00YTM4LTkyZTYtNzJlZTA2MDZhOGY3MTQ4NTEzNjEtMDA2" #My Bearer Token
-bearer = "M2ZjMjcxODQtMmFlYi00YWJiLWExYWYtMDBkYThmZDU2N2UyNzk5NTc2NjctNDgx" #updated
+#bearer = "M2ZjMjcxODQtMmFlYi00YWJiLWExYWYtMDBkYThmZDU2N2UyNzk5NTc2NjctNDgx" #updated
 fcruleimg = "http://www.diggingforfire.net/sitegfx/FightClub.jpg"
 bat_signal  = "https://upload.wikimedia.org/wikipedia/en/c/c6/Bat-signal_1989_film.jpg"
 run_itty(server='wsgiref', host='0.0.0.0', port=10010)
