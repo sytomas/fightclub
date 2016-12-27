@@ -235,7 +235,7 @@ def process_incoming_message(post_data):
             break
 
     rules = ""
-    for r in rules.items():
+    for c in rules.items():
         if message.text.find(c[0]) != -1:
             rules = c[0]
             sys.stderr.write("Fight Club Rules: " + rules + "\n")
