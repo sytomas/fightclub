@@ -269,7 +269,7 @@ def rules(post_data):
     #rule = fc.all()
     #randomurl = random.choice(rule)
     #return randomurl['quote']
-    for r in rules.items():
+    for c in rules.items():
         message = message + "* **%s**: %s \n" % (c[0], c[1])
     return message
 
