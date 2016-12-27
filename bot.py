@@ -56,15 +56,11 @@
 
 """
 
-from flask import Flask, request
 from ciscosparkapi import CiscoSparkAPI
-import os
 import sys
-import json
 #*********************** Syd Added ***************************
 from itty import *
 import urllib2
-import json
 import requests
 requests.packages.urllib3.disable_warnings()
 from requests.auth import HTTPBasicAuth
@@ -72,11 +68,10 @@ import base64
 import random
 from tinydb import TinyDB, Query
 from flask import Flask, request
-from ciscosparkapi import CiscoSparkAPI
 import os
-import sys
 import json
 import re
+
 #*************************************************************
 
 # Create the Flask application that provides the bot foundation
@@ -235,10 +230,12 @@ def process_incoming_message(post_data):
     # Syd - Update this section when adding new features
     if command in ["", "/help"]:
         reply = send_help(post_data)
-    elif command in ["/echo"]:
+    elif command in ["", "/echo"]:
         reply = send_echo(message)
-    elif command in ["/chucknorris"]:
+    elif command in ["", "/chucknorris"]:
         reply = chucknorris()
+    elif command in ["", "/rules"]:
+        reply = rules()
 
     #send_message_to_room(room_id, reply)
     spark.messages.create(roomId=room_id, markdown=reply)
@@ -248,6 +245,12 @@ def chucknorris():
     response = urllib2.urlopen('http://api.icndb.com/jokes/random')
     joke = json.loads(response.read())["value"]["joke"]
     return joke
+
+def rules():
+    fc = TinyDB('frules.json')
+    rule = fc.all()
+    randomurl = random.choice(rule)
+    return randomurl['quote']
 
 # Sample command function that just echos back the sent message
 def send_echo(incoming):
