@@ -87,6 +87,16 @@ commands = {
     "/chucknorris": "Chuck Norris needs no explanation."
 }
 
+rules = {
+    "1st RULE: You do not talk about FIGHT CLUB.",
+    "2nd RULE: You DO NOT talk about FIGHT CLUB.",
+    '3rd RULE: If someone says "stop" or goes limp, taps out the fight is over.',
+    "4th RULE: Only two guys to a fight.",
+    "5th RULE: One fight at a time.",
+    "6th RULE: No shirts, no shoes.",
+    "7th RULE: Fights will go on as long as they have to.",
+    "8th and final RULE: If this is your first night at FIGHT CLUB, you HAVE to fight."
+}
 
 # Not strictly needed for most bots, but this allows for requests to be sent
 # to the bot from other web sites.  "CORS" Requests
@@ -251,14 +261,10 @@ def rules(post_data):
     #rule = fc.all()
     #randomurl = random.choice(rule)
     #return randomurl['quote']
-    message = "1st RULE: You do not talk about FIGHT CLUB.\n"
-    message = "2nd RULE: You DO NOT talk about FIGHT CLUB.\n"
-    message = '3rd RULE: If someone says "stop" or goes limp, taps out the fight is over.\n'
-    message = "4th RULE: Only two guys to a fight.\n"
-    message = "5th RULE: One fight at a time.\n"
-    message = "6th RULE: No shirts, no shoes.\n"
-    message = "7th RULE: Fights will go on as long as they have to.\n"
-    message = "8th and final RULE: If this is your first night at FIGHT CLUB, you HAVE to fight."
+    for r in rules.items():
+        message = message + "* **%s**: %s \n" % (c[0], c[1])
+    return message
+
 # Sample command function that just echos back the sent message
 def send_echo(incoming):
     # Get sent message
