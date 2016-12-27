@@ -236,14 +236,7 @@ def process_incoming_message(post_data):
         reply = chucknorris()
     elif command in ["", "/rules"]:
         #reply = rules()
-        msg = "1st RULE: You do not talk about FIGHT CLUB.\n"
-        msg += "2nd RULE: You DO NOT talk about FIGHT CLUB.\n"
-        msg += '3rd RULE: If someone says "stop" or goes limp, taps out the fight is over.\n'
-        msg += "4th RULE: Only two guys to a fight.\n"
-        msg += "5th RULE: One fight at a time.\n"
-        msg += "6th RULE: No shirts, no shoes.\n"
-        msg += "7th RULE: Fights will go on as long as they have to.\n"
-        msg += "8th and final RULE: If this is your first night at FIGHT CLUB, you HAVE to fight."
+        reply = rules(post_data)
     #send_message_to_room(room_id, reply)
     spark.messages.create(roomId=room_id, markdown=reply)
 
@@ -253,12 +246,19 @@ def chucknorris():
     joke = json.loads(response.read())["value"]["joke"]
     return joke
 
-def rules():
-    fc = TinyDB('frules.json')
-    rule = fc.all()
-    randomurl = random.choice(rule)
-    return randomurl['quote']
-
+def rules(post_data):
+    #fc = TinyDB('frules.json')
+    #rule = fc.all()
+    #randomurl = random.choice(rule)
+    #return randomurl['quote']
+    message = "1st RULE: You do not talk about FIGHT CLUB.\n"
+    message = "2nd RULE: You DO NOT talk about FIGHT CLUB.\n"
+    message = '3rd RULE: If someone says "stop" or goes limp, taps out the fight is over.\n'
+    message = "4th RULE: Only two guys to a fight.\n"
+    message = "5th RULE: One fight at a time.\n"
+    message = "6th RULE: No shirts, no shoes.\n"
+    message = "7th RULE: Fights will go on as long as they have to.\n"
+    message = "8th and final RULE: If this is your first night at FIGHT CLUB, you HAVE to fight."
 # Sample command function that just echos back the sent message
 def send_echo(incoming):
     # Get sent message
