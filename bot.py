@@ -234,14 +234,6 @@ def process_incoming_message(post_data):
             # If a command was found, stop looking for others
             break
 
-    rule = ""
-    for c in rules.items():
-        if message.text.find(c[0]) != -1:
-            rule = c[0]
-            sys.stderr.write("Fight Club Rules: " + rule + "\n")
-            # If a command was found, stop looking for others
-            break
-
     reply = ""
     # Take action based on command
     # If no command found, send help
@@ -253,8 +245,7 @@ def process_incoming_message(post_data):
     elif command in ["", "/chucknorris"]:
         reply = chucknorris()
     elif command in ["", "/rules"]:
-        #reply = rules()
-        reply = rules(post_data)
+        reply = rules()
     #send_message_to_room(room_id, reply)
     spark.messages.create(roomId=room_id, markdown=reply)
 
@@ -264,15 +255,11 @@ def chucknorris():
     joke = json.loads(response.read())["value"]["joke"]
     return joke
 
-def rules(post_data):
-    #fc = TinyDB('frules.json')
-    #rule = fc.all()
-    #randomurl = random.choice(rule)
-    #return randomurl['quote']
-    message = "hello"
-    for c in rules.items():
-        message = message + "* **%s**: %s \n" % (c[0], c[1])
-    return message
+def rules():
+    fc = TinyDB('frules.json')
+    rule = fc.all()
+    randomurl = random.choice(rule)
+    return randomurl['quote']
 
 # Sample command function that just echos back the sent message
 def send_echo(incoming):
