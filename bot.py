@@ -244,10 +244,7 @@ def process_incoming_message(post_data):
     spark.messages.create(roomId=room_id, markdown=reply)
 
 #********************* Definition Section ****************************
-def chucknorris():
-    """
-    chucknorris - no explanation needed.'
-    """
+def chucknorris(chuckincoming):
     response = urllib2.urlopen('http://api.icndb.com/jokes/random')
     joke = json.loads(response.read())["value"]["joke"]
     return joke
