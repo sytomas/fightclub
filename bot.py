@@ -238,13 +238,13 @@ def process_incoming_message(post_data):
     elif command in ["/echo"]:
         reply = send_echo(message)
     elif command in ["/chucknorris"]:
-        reply = chucknorris(joke)
+        reply = chucknorris()
 
     send_message_to_room(room_id, reply)
     spark.messages.create(roomId=room_id, markdown=reply)
 
 #********************* Definition Section ****************************
-def chucknorris(chuckincoming):
+def chucknorris():
     response = urllib2.urlopen('http://api.icndb.com/jokes/random')
     joke = json.loads(response.read())["value"]["joke"]
     return joke
