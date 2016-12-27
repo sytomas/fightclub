@@ -234,6 +234,14 @@ def process_incoming_message(post_data):
             # If a command was found, stop looking for others
             break
 
+    rules = ""
+    for r in rules.items():
+        if message.text.find(c[0]) != -1:
+            rules = c[0]
+            sys.stderr.write("Fight Club Rules: " + rules + "\n")
+            # If a command was found, stop looking for others
+            break
+
     reply = ""
     # Take action based on command
     # If no command found, send help
