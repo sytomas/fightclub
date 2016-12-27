@@ -234,11 +234,11 @@ def process_incoming_message(post_data):
             # If a command was found, stop looking for others
             break
 
-    rules = ""
+    rule = ""
     for c in rules.items():
         if message.text.find(c[0]) != -1:
-            rules = c[0]
-            sys.stderr.write("Fight Club Rules: " + rules + "\n")
+            rule = c[0]
+            sys.stderr.write("Fight Club Rules: " + rule + "\n")
             # If a command was found, stop looking for others
             break
 
