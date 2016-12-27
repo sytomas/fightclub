@@ -90,7 +90,7 @@ commands = {
 rules = {
     "1st RULE": "You do not talk about FIGHT CLUB.",
     "2nd RULE": "You DO NOT talk about FIGHT CLUB.",
-    "3rd RULE": 'If someone says "stop" or goes limp, taps out the fight is over.',
+    "3rd RULE": "If someone says 'stop' or goes limp, taps out the fight is over.",
     "4th RULE": "Only two guys to a fight.",
     "5th RULE": "One fight at a time.",
     "6th RULE": "No shirts, no shoes.",
