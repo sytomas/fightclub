@@ -235,8 +235,15 @@ def process_incoming_message(post_data):
     elif command in ["", "/chucknorris"]:
         reply = chucknorris()
     elif command in ["", "/rules"]:
-        reply = rules()
-
+        #reply = rules()
+        msg = "1st RULE: You do not talk about FIGHT CLUB.\n"
+        msg += "2nd RULE: You DO NOT talk about FIGHT CLUB.\n"
+        msg += '3rd RULE: If someone says "stop" or goes limp, taps out the fight is over.\n'
+        msg += "4th RULE: Only two guys to a fight.\n"
+        msg += "5th RULE: One fight at a time.\n"
+        msg += "6th RULE: No shirts, no shoes.\n"
+        msg += "7th RULE: Fights will go on as long as they have to.\n"
+        msg += "8th and final RULE: If this is your first night at FIGHT CLUB, you HAVE to fight."
     #send_message_to_room(room_id, reply)
     spark.messages.create(roomId=room_id, markdown=reply)
 
