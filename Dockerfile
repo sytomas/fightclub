@@ -1,6 +1,12 @@
 FROM ubuntu:14.04
 MAINTAINER Syd Tomas <sytomas@cisco.com>
 EXPOSE 10010
+
+ENV SPARK_BOT_EMAIL=fightclub@sparkbot.io
+ENV SPARK_BOT_TOKEN=MzJjZDAxNWUtOTIzZC00MTdmLTg0MWQtMjVkY2ZkNjU0ZmYxZDdjZDM1NjgtYWMw
+ENV SPARK_BOT_URL=http://ec2-54-183-13-197.us-west-1.compute.amazonaws.com:5000
+ENV SPARK_BOT_APP_NAME='fightclub'
+
 RUN "sh" "-c" "echo nameserver 8.8.8.8 >> /etc/resolv.conf"
 
 # install system-wide deps for python and node
