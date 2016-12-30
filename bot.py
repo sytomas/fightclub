@@ -231,6 +231,7 @@ def process_incoming_message(post_data):
             sys.stderr.write("Found command: " + command + "\n")
             # If a command was found, stop looking for others
             break
+    rule = ""
     for c in rules.items():
         if message.text.find(c[0]) != -1:
             rule = c[0]
