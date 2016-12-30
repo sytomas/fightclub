@@ -58,7 +58,6 @@
 
 from ciscosparkapi import CiscoSparkAPI
 import sys
-#*********************** Syd Added ***************************
 from itty import *
 import urllib2
 import requests
@@ -71,8 +70,6 @@ from flask import Flask, request
 import os
 import json
 import re
-
-#*************************************************************
 
 # Create the Flask application that provides the bot foundation
 app = Flask(__name__)
@@ -238,7 +235,7 @@ def process_incoming_message(post_data):
     reply = ""
     # Take action based on command
     # If no command found, send help
-    # Syd - Update this section when adding new features
+    # Update this section when adding new features
     if command in ["", "/help"]:
         reply = send_help(post_data)
     elif command in ["", "/echo"]:
@@ -246,7 +243,7 @@ def process_incoming_message(post_data):
     elif command in ["", "/chucknorris"]:
         reply = chucknorris()
     elif command in ["", "/rules"]:
-        reply = rules()
+        reply = rules(post_rules)
     #send_message_to_room(room_id, reply)
     spark.messages.create(roomId=room_id, markdown=reply)
 
@@ -256,11 +253,16 @@ def chucknorris():
     joke = json.loads(response.read())["value"]["joke"]
     return joke
 
-def rules():
-    fc = TinyDB('frules.json')
-    rule = fc.all()
-    randomurl = random.choice(rule)
-    return randomurl['quote']
+def rules(post_rules):
+    for c in rules.item():
+        message = message + "* **%s**: %s \n" % (c[0], c[1])
+    returm message
+
+#def rules():
+#    fc = TinyDB('frules.json')
+#    rule = fc.all()
+#    randomurl = random.choice(rule)
+#    return randomurl['quote']
 
 # Sample command function that just echos back the sent message
 def send_echo(incoming):
