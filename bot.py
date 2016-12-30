@@ -16,6 +16,9 @@ import sys
 import json
 import re
 
+# Create the Flask application that provides the bot foundation
+app = Flask(__name__)
+
 def chucknorris():
     """
     chucknorris - no explanation needed.'
