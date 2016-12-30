@@ -250,7 +250,7 @@ def process_incoming_message(post_data):
     elif command in ["", "/chucknorris"]:
         reply = chucknorris()
     elif command in ["", "/rules"]:
-        reply = rules(post_data)
+        reply = send_rules(post_data)
     #send_message_to_room(room_id, reply)
     spark.messages.create(roomId=room_id, markdown=reply)
 
@@ -260,9 +260,9 @@ def chucknorris():
     joke = json.loads(response.read())["value"]["joke"]
     return joke
 
-def rules(post_data):
+def send_rules(post_data):
     for c in rules.items():
-        message = message + "* **%s**: %s \n" % (c[0], c[1])
+        message = "* **%s**: %s \n" % (c[0], c[1])
     return message
 
 #def rules():
