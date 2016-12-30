@@ -256,7 +256,7 @@ def chucknorris():
 def rules(post_rules):
     for c in rules.item():
         message = message + "* **%s**: %s \n" % (c[0], c[1])
-    returm message
+    return message
 
 #def rules():
 #    fc = TinyDB('frules.json')
