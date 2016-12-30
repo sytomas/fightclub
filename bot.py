@@ -293,6 +293,10 @@ def extract_message(command, text):
     message = text[cmd_loc + len(command):]
     return message
 
+def extract_message(rule, text):
+    cmd_loc = text.find(rule)
+    message = text[cmd_loc + len(rule):]
+    returm message
 
 # Setup the Spark connection and WebHook
 def spark_setup(email, token):
