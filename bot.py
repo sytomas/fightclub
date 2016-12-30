@@ -262,7 +262,7 @@ def chucknorris():
 
 def send_rules(post_data):
     for c in rules.items():
-        message = "* **%s**: %s \n" % (c[0], c[5])
+        message = "* **%s**: %s \n" % (c[0], c[1)
     return message
 
 #def rules():
