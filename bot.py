@@ -260,7 +260,7 @@ def chucknorris():
     return joke
 
 def rules(post_data):
-    for c in rules.item():
+    for c in rules.items():
         message = message + "* **%s**: %s \n" % (c[0], c[1])
     return message
 
