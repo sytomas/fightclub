@@ -249,8 +249,10 @@ def chucknorris():
 def send_rules(post_data):
     #message = "Fight Club Rules: \n"
     #for c in rules.items():
-    for c in rules.read().split('\n'):
-       message = str(c)
+    #for c in rules.split('\n'):
+    readlines = rules.readlines()
+    for line in readlines()
+       message = str(line)
        #message = message + str(c)
        #message = "* **%s**: %s \n" % (c[0], c[1])
     return message
