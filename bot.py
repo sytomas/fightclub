@@ -261,8 +261,10 @@ def chucknorris():
     return joke
 
 def send_rules(post_data):
+    message = "Fight Club Rules"
+    message = message + "Here they are:  \n"
     for c in rules.items():
-        message = "* **%s**: %s \n" % (c[0], c[1])
+       message = "* **%s**: %s \n" % (c[0], c[1])
     return message
 
 #def rules():
