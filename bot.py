@@ -251,7 +251,7 @@ def process_incoming_message(post_data):
         reply = chucknorris()
     elif command in ["", "/rules"]:
         reply = send_rules(post_data)
-    elif commaind in ["", "/fighgif"]:
+    elif command in ["", "/fightgif"]:
         reply = fightgif()
     #send_message_to_room(room_id, reply)
     spark.messages.create(roomId=room_id, markdown=reply)
