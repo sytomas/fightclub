@@ -247,7 +247,7 @@ def chucknorris():
     return joke
 
 def send_rules(post_data):
-    print "Fight Club Rules. \n"
+    message = "Fight Club Rules. \n"
     #for c in rules.items():
     for c in rules:
        print(c)
