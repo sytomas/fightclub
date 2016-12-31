@@ -252,7 +252,7 @@ def process_incoming_message(post_data):
     elif command in ["", "/rules"]:
         reply = send_rules(post_data)
     elif command in ["", "/fightgif"]:
-        reply = fightgif()
+        reply = fightgif(post_data)
     #send_message_to_room(room_id, reply)
     spark.messages.create(roomId=room_id, markdown=reply)
 
@@ -269,7 +269,7 @@ def send_rules(post_data):
        message = "* **%s**: %s \n" % (c[0], c[1])
     return message
 
-def fightgif():
+def fightgif(post_data):
     """
     the fightgif definition retrieves a random gif link from the 'fggif.json'
     """
