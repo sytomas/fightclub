@@ -251,7 +251,7 @@ def send_rules(post_data):
     #for c in rules.items():
     for c in rules:
        print(c)
-       message = str(c)
+       message = message + str(c)
        #message = "* **%s**: %s \n" % (c[0], c[1])
     return message
 
