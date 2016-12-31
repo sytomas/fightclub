@@ -251,7 +251,7 @@ def send_rules(post_data):
     #for c in rules.items():
     #for c in rules.split('\n'):
     readlines = rules.readlines()
-    for line in readlines()
+    for line in readlines:
        message = str(line)
        #message = message + str(c)
        #message = "* **%s**: %s \n" % (c[0], c[1])
