@@ -1,4 +1,4 @@
-#!/usr/bin/python
+index#!/usr/bin/python
 
 from itty import *
 import urllib2

@@ -267,7 +267,7 @@ def send_rules(post_data):
        message = "* **%s**: %s \n" % (c[0], c[1])
     return message
 
-#def rules():
+#def send_rules():
 #    fc = TinyDB('frules.json')
 #    rule = fc.all()
 #    randomurl = random.choice(rule)
