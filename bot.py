@@ -251,6 +251,8 @@ def process_incoming_message(post_data):
         reply = chucknorris()
     elif command in ["", "/rules"]:
         reply = send_rules(post_data)
+    elif commaind in ["", "/fighgif"]:
+        reply = fightgif()
     #send_message_to_room(room_id, reply)
     spark.messages.create(roomId=room_id, markdown=reply)
 
@@ -266,6 +268,15 @@ def send_rules(post_data):
     for c in rules.items():
        message = "* **%s**: %s \n" % (c[0], c[1])
     return message
+
+def fightgif():
+    """
+    the fightgif definition retrieves a random gif link from the 'fggif.json'
+    """
+    fg = TinyDB('fggif.json')
+    fggif = fg.all()
+    randomgif = random.choice(fggif)
+    return randomgif['gif']
 
 #def send_rules():
 #    fc = TinyDB('frules.json')
