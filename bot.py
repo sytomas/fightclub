@@ -263,8 +263,7 @@ def chucknorris():
     return joke
 
 def send_rules(post_data):
-    message = "Fight Club Rules"
-    message = message + "Here they are:  \n"
+    message = "Fight Club Rules. \n"
     for c in rules.items():
        message = "* **%s**: %s \n" % (c[0], c[1])
     return message
@@ -293,8 +292,7 @@ def send_echo(incoming):
 
 # Construct a help message for users.
 def send_help(post_data):
-    message = "Hello!  "
-    message = message + "I understand the following commands:  \n"
+    message = "Hello!  I understand the following commands:  \n"
     for c in commands.items():
         message = message + "* **%s**: %s \n" % (c[0], c[1])
     return message
