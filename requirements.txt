@@ -1,6 +1,0 @@
-requests==2.11.1
-Flask==0.11.1
-ciscosparkapi==0.3.1
-tinydb
-redis>=2.10.5
-pyyaml>=3.12
